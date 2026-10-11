@@ -1,4 +1,4 @@
-
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -7,6 +7,12 @@ from typing import List
 import json
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 CORS_HEADERS = {
     "Access-Control-Allow-Origin": "*",
